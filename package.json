@@ -1,0 +1,20 @@
+{
+  "name": "survey-application-api",
+  "version": "1.0.0",
+  "description": "A backend api that survey react-web application will connect to",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest --watchAll",
+    "migrate-surveys": "node -e \"const run = require('./migrations/create_table_surveys'); run.up();\"",
+    "migrate-questions": "node -e \"const run = require('./migrations/create_table_questions'); run.up();\"",
+    "migrate-answers": "node -e \"const run = require('./migrations/create_table_answers'); run.up();\"",
+    "migrate-responses": "node -e \"const run = require('./migrations/create_table_responses'); run.up();\""
+  },
+  "author": "Oluwaseun Aderinlokun",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql8": "^2.17.3"
+  }
+}
