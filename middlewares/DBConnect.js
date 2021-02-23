@@ -14,7 +14,6 @@ exports.connect = () => {
             if ( err ) {
                 reject(err);
             } else {
-                console.log('MySql connected successfully...');
                 resolve(con);
             }
         });

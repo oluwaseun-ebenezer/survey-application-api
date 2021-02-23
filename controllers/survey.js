@@ -6,7 +6,6 @@ exports.fetchSurvey = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(200).json({
                 status: 1,
@@ -14,7 +13,6 @@ exports.fetchSurvey = async(req, res) => {
                 message: `Survey fetched successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -23,7 +21,6 @@ exports.fetchSurvey = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to fetch all survey.`
@@ -36,14 +33,12 @@ exports.createSurvey = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Survey created successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -52,7 +47,6 @@ exports.createSurvey = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to create survey .`
@@ -66,7 +60,6 @@ exports.fetchAllSurvey = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(200).json({
                 status: 1,
@@ -74,7 +67,6 @@ exports.fetchAllSurvey = async(req, res) => {
                 message: `Surveys fetched successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -83,7 +75,6 @@ exports.fetchAllSurvey = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to fetch all surveys.`
@@ -96,14 +87,12 @@ exports.editSurvey = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Survey updated successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -112,7 +101,6 @@ exports.editSurvey = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to update survey.`
@@ -126,14 +114,12 @@ exports.deleteSurvey = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Survey deleted successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -142,7 +128,6 @@ exports.deleteSurvey = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to delete survey .`

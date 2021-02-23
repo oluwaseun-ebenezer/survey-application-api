@@ -16,9 +16,7 @@ exports.submitResponse = async(req, res) => {
 
                     await dbConnect.connect().then((connection) => {
                         dbConnect.queryDB(connection, sql).then((result) => {
-                            console.log(result);
                         }).catch((err) => {
-                            console.log(err);
                             done = false;
                         });
                         connection.end();
@@ -55,7 +53,6 @@ exports.submitResponse = async(req, res) => {
             })
         }
     } catch (error) {
-        console.log(error)
         return res.status(500).json({
             status: 0,
             message: `Unable to submit responses.`
@@ -105,15 +102,10 @@ exports.generateReportBySurvey = async(req, res) => {
     
                                         resolve()
                                     } else{
-                                        // done = false;
-                                        // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%22222222222')
                                         resolve()
                                     }
     
                                 })).catch((err) => {
-                                    console.log(err);
-                                    // done = false;
-                                    // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%7777')
                                     resolve()
                                 });
     
@@ -135,7 +127,6 @@ exports.generateReportBySurvey = async(req, res) => {
                                                 if(noOfResponseByAnswer[0]['count(*)']){
                                                     answerRes.no = noOfResponseByAnswer[0]['count(*)'];
                                                     answerRes.percent = (noOfResponseByAnswer[0]['count(*)'] / noOfResponse[0]['count(*)']) * 100
-                                                    // console.log(answerRes)
                                                     result.push([
                                                         `Q${parseInt(question, 10)+1}`,
                                                         questions[question].description,
@@ -145,38 +136,24 @@ exports.generateReportBySurvey = async(req, res) => {
                                                         noOfResponse[0]['count(*)'],
                                                         100,
                                                     ])
-                                                    console.log(result)
                                                     resolve();
                                                 } else{
-                                                    // done = false;
-                                                    // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%4444444')
                                                     resolve();
                                                 }
                                                 
                                             })).catch((err) => {
-                                                console.log(err);
-                                                // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%333333333')
-                                                // done = false;
+
                                             });
     
-                                            // if(!(done)){
-                                            //     break;
-                                            // }
                                             questionRes.answerStat[answers[answer].id] = answerRes;
-                                            // console.log(answerRes)
                                         }
     
                                         resolve()
                                     } else{
-                                        // done = false;
-                                        // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%22222222222')
                                         resolve()
                                     }
     
                                 })).catch((err) => {
-                                    console.log(err);
-                                    // done = false;
-                                    // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%7777')
                                     resolve()
                                 });
     
@@ -184,14 +161,9 @@ exports.generateReportBySurvey = async(req, res) => {
                             }
                             
                         } else{
-                            // done = false;
-                            // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%6666')
                             resolve()
                         }
                     })).catch((err) => {
-                        console.log(err);
-                        // done = false;
-                        // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%555555')
                         resolve()
                     });
 
@@ -199,8 +171,6 @@ exports.generateReportBySurvey = async(req, res) => {
                         break;
                     }
 
-                    // result[questions[question].id] = questionRes;
-                    // console.log(questionRes)
                 }
 
             } else{
@@ -210,9 +180,6 @@ exports.generateReportBySurvey = async(req, res) => {
                     message: `Error generating statistical report.`
                 })
             }
-            
-            console.log(result)
-            console.log('*************')
 
             if (done){
 
@@ -230,7 +197,6 @@ exports.generateReportBySurvey = async(req, res) => {
             }
             resolve()
         })).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -239,7 +205,6 @@ exports.generateReportBySurvey = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Error generating statistical report.`
@@ -261,7 +226,6 @@ exports.checkSurvey = async(req, res) => {
                 message: `Survey response count fetched successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -270,7 +234,6 @@ exports.checkSurvey = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to fetch all survey response count.`

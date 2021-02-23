@@ -6,14 +6,12 @@ exports.createQuestion = async(req, res) => {
     
     await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Question added to survey successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -22,7 +20,6 @@ exports.createQuestion = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to add question to survey .`
@@ -36,7 +33,6 @@ exports.fetchAllQuestionBySurvey = async(req, res) => {
     
     await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(200).json({
                 status: 1,
@@ -44,7 +40,6 @@ exports.fetchAllQuestionBySurvey = async(req, res) => {
                 message: `Questons fetched successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -53,7 +48,6 @@ exports.fetchAllQuestionBySurvey = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to fetch all questions for survey.`
@@ -66,14 +60,12 @@ exports.editQuestion = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Question updated successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -82,7 +74,6 @@ exports.editQuestion = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to update question.`
@@ -96,14 +87,12 @@ exports.deleteQuestion = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Question deleted successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -112,7 +101,6 @@ exports.deleteQuestion = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to delete question .`

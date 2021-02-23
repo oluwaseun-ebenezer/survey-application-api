@@ -6,14 +6,12 @@ exports.createAnswer = async(req, res) => {
     
     await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Answer attached to question successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -22,7 +20,6 @@ exports.createAnswer = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to attach answer to question.`
@@ -36,7 +33,6 @@ exports.fetchAllAnswerByQuestion = async(req, res) => {
     
     await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(200).json({
                 status: 1,
@@ -44,7 +40,6 @@ exports.fetchAllAnswerByQuestion = async(req, res) => {
                 message: `Answers to question fetched successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -53,7 +48,6 @@ exports.fetchAllAnswerByQuestion = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to fetch answers to questions for survey.`
@@ -66,14 +60,12 @@ exports.editAnswer = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Answer updated successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -82,7 +74,6 @@ exports.editAnswer = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to update answer.`
@@ -96,14 +87,12 @@ exports.deleteAnswer = async(req, res) => {
     
     const connection = await dbConnect.connect().then((connection) => {
         dbConnect.queryDB(connection, sql).then((result) => {
-            console.log(result);
             connection.end();
             return res.status(201).json({
                 status: 1,
                 message: `Answer deleted successfully.`
             })
         }).catch((err) => {
-            console.log(err);
             connection.end();
             return res.status(500).json({
                 status: 0,
@@ -112,7 +101,6 @@ exports.deleteAnswer = async(req, res) => {
         });
 
     }).catch((err) => {
-        console.log(err);
         return res.status(500).json({
             status: 0,
             message: `Unable to delete answer .`
